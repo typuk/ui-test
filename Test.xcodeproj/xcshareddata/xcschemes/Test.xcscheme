@@ -46,17 +46,6 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06AA725B2B7F8C3F00DB29F1"
-               BuildableName = "TestUITests.xctest"
-               BlueprintName = "TestUITests"
-               ReferencedContainer = "container:Test.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"

@@ -51,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		0601EF002B80EC1B003AAD0D /* JokeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeStorage.swift; sourceTree = "<group>"; };
-		067F8EDC2B834B7D00CAA2D3 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		067F8EDD2B8351D500CAA2D3 /* JokeStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeStorageMock.swift; sourceTree = "<group>"; };
 		06AA72402B7F8C3D00DB29F1 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AA72432B7F8C3D00DB29F1 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		06AA727E2B7F905500DB29F1 /* JokeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeAPIService.swift; sourceTree = "<group>"; };
 		06AA72802B7F90D700DB29F1 /* JokeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeRequest.swift; sourceTree = "<group>"; };
 		06AA72832B80E2F400DB29F1 /* BaseComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponents.swift; sourceTree = "<group>"; };
+		D92FDB5C2B837B7A00FE9E9F /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		D94DBB152B81F9A300A4BBE1 /* JokeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeRepository.swift; sourceTree = "<group>"; };
 		D94DBB182B81FACF00A4BBE1 /* JokeDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDAO.swift; sourceTree = "<group>"; };
 		D94DBB1A2B81FBC700A4BBE1 /* JokeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeMapper.swift; sourceTree = "<group>"; };
@@ -144,6 +144,7 @@
 		06AA72372B7F8C3D00DB29F1 = {
 			isa = PBXGroup;
 			children = (
+				D92FDB5C2B837B7A00FE9E9F /* TestPlan.xctestplan */,
 				06AA72422B7F8C3D00DB29F1 /* Test */,
 				06AA72552B7F8C3F00DB29F1 /* TestTests */,
 				06AA72412B7F8C3D00DB29F1 /* Products */,
@@ -170,7 +171,6 @@
 				06AA72432B7F8C3D00DB29F1 /* TestApp.swift */,
 				06AA72492B7F8C3F00DB29F1 /* Assets.xcassets */,
 				D94DBB342B82570500A4BBE1 /* Localizable.xcstrings */,
-				067F8EDC2B834B7D00CAA2D3 /* TestPlan.xctestplan */,
 				06AA724B2B7F8C3F00DB29F1 /* Preview Content */,
 			);
 			path = Test;
