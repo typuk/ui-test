@@ -8,10 +8,8 @@ struct JokeListView: View {
     private var showErrorBinding: Binding<Bool> {
         .init(get: {
             viewModel.state.error != nil
-        }, set: { isPresenting in
-            if isPresenting {
-                viewModel.state.error = nil
-            }
+        }, set: { _ in
+            viewModel.state.error = nil
         })
     }
 
@@ -27,15 +25,17 @@ struct JokeListView: View {
         NavigationStack(path: $navigationState.routes) {
             rootView
                 .navigationDestination(for: Joke.self) { joke in
-                    JokeView(joke: joke)
+                    JokeDetailView(joke: joke)
                 }
         }
         .alert(isPresented: showErrorBinding) {
             Alert(error: viewModel.state.error)
         }
+        .task {
+            await viewModel.prepare()
+        }
     }
 }
-
 
 private extension JokeListView {
 
@@ -51,8 +51,12 @@ private extension JokeListView {
             }
         }
         .navigationTitle("joke.list.navigation.bar.title")
-        .task {
-            await viewModel.prepare()
+        .toolbar {
+            AsyncButton(action: {
+                await viewModel.showRandomJoke()
+            }, label: {
+                Text("joke.list.navigation.bar.random")
+            })
         }
     }
 
@@ -70,11 +74,11 @@ private extension JokeListView {
                 HStack(alignment: .center, content: {
                     Spacer()
                     
-                    LoadingButton(action: {
+                    AsyncButton(action: {
                         await viewModel.fetchJokes()
                     }, label: {
                         Text("joke.list.load.cta")
-                    }, isLoading: $viewModel.state.isLoading)
+                    })
                     .padding(32)
                     .buttonStyle(.bordered)
                     
@@ -94,13 +98,13 @@ private extension JokeListView {
             Text("joke.list.no.data.saved")
                 .padding(.bottom, 16)
             
-            LoadingButton(action: {
+            AsyncButton(action: {
                 await viewModel.fetchJokes()
             }, label: {
                 Text("joke.list.load.cta")
-            }, isLoading: $viewModel.state.isLoading)
+            })
         }
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
     }
 }

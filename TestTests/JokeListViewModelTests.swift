@@ -32,7 +32,7 @@ final class JokeListViewModelTests: XCTestCase {
     }
     
     func testErrorGettingInitialData() async {
-        jokeRepository.error = NetworkError.internalError
+        jokeRepository.error = NetworkError.unknown
         await viewModel.prepare()
         
         XCTAssertEqual(viewModel.state.dataState, .empty)
@@ -54,5 +54,3 @@ final class JokeListViewModelTests: XCTestCase {
         XCTAssertEqual(navigationState.routes, [.mock])
     }
 }
-
-

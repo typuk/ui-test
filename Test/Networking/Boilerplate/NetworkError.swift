@@ -13,4 +13,17 @@ enum NetworkError: Error {
     case noInternetConnection
 
     case unknown
+    
+    init(with error: Error) {
+        switch (error as NSError).code {
+        case NSURLErrorCannotConnectToHost:
+            self = .noConnectionToHost
+        case NSURLErrorNetworkConnectionLost, NSURLErrorNotConnectedToInternet:
+            self = .noInternetConnection
+        case NSURLErrorTimedOut:
+            self = .timedOut
+        default:
+            self = .unknown
+        }
+    }
 }

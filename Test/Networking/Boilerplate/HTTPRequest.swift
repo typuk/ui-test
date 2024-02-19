@@ -31,7 +31,6 @@ protocol HTTPRequest {
     var bodyData: Data? { get }
     var queryParams: [String: Any]? { get }
     var headers: [String: String]? { get }
-    var isAuthenticationRequired: Bool { get }
 }
 
 extension HTTPRequest {
@@ -41,5 +40,4 @@ extension HTTPRequest {
     public var bodyData: Data? { return nil }
     public var queryParams: [String: Any]? { nil }
     public var headers: [String: String]? { nil }
-    public var isAuthenticationRequired: Bool { return true }
 }

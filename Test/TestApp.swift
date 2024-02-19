@@ -7,6 +7,5 @@ struct TestApp: App {
         WindowGroup {
             JokeListView()
         }
-        .modelContainer(BaseComponents.shared.sharedModelContainer)
     }
 }

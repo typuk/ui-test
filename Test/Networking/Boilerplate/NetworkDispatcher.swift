@@ -32,18 +32,24 @@ final class NetworkDispatcherImplementation: NetworkDispatcher {
 private extension NetworkDispatcherImplementation {
 
     @discardableResult func performNetworkRequest(_ httpRequest: HTTPRequest) async throws -> Data {
-        let request = try dependencies.requestFactory.makeURLRequest(for: httpRequest)
-
-        let (data, response) = try await dependencies.sender.data(for: request)
-        let httpResponse = response as! HTTPURLResponse // swiftlint:disable:this force_cast
-
-        switch httpResponse.statusCode {
-        case 202:
-            throw NetworkError.dataNotReady
-        case 200..<300:
-            return data
-        default:
-            throw NetworkError.unknown
+        do {
+            let request = try dependencies.requestFactory.makeURLRequest(for: httpRequest)
+            
+            let (data, response) = try await dependencies.sender.data(for: request)
+            let httpResponse = response as! HTTPURLResponse // swiftlint:disable:this force_cast
+            
+            switch httpResponse.statusCode {
+            case 200..<300:
+                return data
+            case 404:
+                throw NetworkError.resourceNotFound
+            case 500:
+                throw NetworkError.internalError
+            default:
+                throw NetworkError.unknown
+            }
+        } catch {
+            throw NetworkError(with: error)
         }
     }
 }

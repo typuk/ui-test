@@ -6,17 +6,11 @@ final class JokeRepositoryTests: XCTestCase {
     
     private var repository: JokeRepository!
     private var jokeAPIService: JokeAPIServiceMock!
-    private var jokeStorage: JokeStorage!
-    private var container: ModelContainer!
+    private var jokeStorage: JokeStorageMock!
     
     override func setUp() async throws {
-        container = try! ModelContainer(
-            for: JokeDAO.self,
-            configurations: .init(isStoredInMemoryOnly: true)
-        )
-        
         jokeAPIService = JokeAPIServiceMock()
-        jokeStorage = JokeStorageImplentation(modelContainer: container)
+        jokeStorage = JokeStorageMock()
         
         repository = JokeRepositoryImplementation(
             jokeAPIService: jokeAPIService,
@@ -25,45 +19,63 @@ final class JokeRepositoryTests: XCTestCase {
     }
     
     func testPreSavedJokes() async throws {
-        for _ in 0..<5 {
-            await container.mainContext.insert(JokeDAO.random())
-        }
-        
+        jokeStorage.jokes = (0..<5).map(JokeDAO.random)
+
         let result = try await repository.getJokes()
         XCTAssertEqual(result.count, 5)
     }
     
     func testLoadingNewJokes() async throws {
-        for _ in 0..<5 {
-            await container.mainContext.insert(JokeDAO.random())
-        }
-        jokeAPIService.returnValue = [JokeDTO](repeating: .random(), count: 10)
-        let result = try await repository.loadJokes(number: 10)
+        jokeStorage.jokes = (0..<5).map(JokeDAO.random)
+        jokeAPIService.returnValue = (5..<15).map(JokeDTO.random)
+        
+        let result = try await repository.loadNewJokes()
         XCTAssertEqual(result.count, 15)
     }
     
-    func testLoadingDuplicate() async throws {
-        var dto = [JokeDTO]()
-        for id in 0..<5 {
-            await container.mainContext.insert(JokeDAO.random(id: id))
-            dto.append(.random(id: id))
+    func testRandomJoke() async throws {
+        let storageJokes = (0..<5).map(JokeDAO.random)
+        let apiJokes = (5..<15).map(JokeDTO.random)
+        
+        jokeStorage.jokes = storageJokes
+        jokeAPIService.returnValue = apiJokes
+        
+        let randomJoke = try await repository.loadRandomJoke()
+        XCTAssertTrue(apiJokes.contains(where: { $0.id == randomJoke.id }))
+        XCTAssertFalse(storageJokes.contains(where: { $0.id == randomJoke.id }))
+    }
+    
+    func testRandomJokeWithoutInternetConnection() async throws {
+        let storageJokes = (0..<5).map(JokeDAO.random)
+        
+        jokeStorage.jokes = storageJokes
+        jokeAPIService.error = NetworkError.noInternetConnection
+        
+        let randomJoke = try await repository.loadRandomJoke()
+        XCTAssertTrue(storageJokes.contains(where: { $0.id == randomJoke.id }))
+    }
+    
+    func testRandomJokeWithoutInternetConnectionAndNoStoredJoke() async {
+        do {
+            jokeStorage.jokes = []
+            jokeAPIService.error = NetworkError.noInternetConnection
+            
+            let randomJoke = try await repository.loadRandomJoke()
+            XCTFail("If API called failed and no items are saved should throw error")
+        } catch {
+            XCTAssertEqual(error as? JokeRepositoryError, JokeRepositoryError.empty)
         }
-        let daad = [JokeDTO](repeating: .random(), count: 5)
-        dto.append(contentsOf: daad)
-        jokeAPIService.returnValue = dto
-        let result = try await repository.loadJokes(number: 10)
-        XCTAssertEqual(result.count, 10)
     }
 }
 
 private extension JokeDAO {
-    static func random(id: Int? = nil) -> JokeDAO {
-        .init(type: "", setup: "", punchline: "", id: id ?? .random(in: 0...100))
+    static func random(int: Int) -> JokeDAO {
+        .init(type: "", setup: "", punchline: "", id: int)
     }
 }
 
 private extension JokeDTO {
-    static func random(id: Int? = nil) -> JokeDTO {
-        .init(type: "", setup: "", punchline: "", id: id ?? .random(in: 100...200))
+    static func random(int: Int) -> JokeDTO {
+        .init(type: "", setup: "", punchline: "", id: int)
     }
 }

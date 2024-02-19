@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0601EF012B80EC1B003AAD0D /* JokeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0601EF002B80EC1B003AAD0D /* JokeStorage.swift */; };
+		067F8EDE2B8351D500CAA2D3 /* JokeStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067F8EDD2B8351D500CAA2D3 /* JokeStorageMock.swift */; };
 		06AA72442B7F8C3D00DB29F1 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA72432B7F8C3D00DB29F1 /* TestApp.swift */; };
 		06AA72462B7F8C3D00DB29F1 /* JokeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AA72452B7F8C3D00DB29F1 /* JokeListView.swift */; };
 		06AA724A2B7F8C3F00DB29F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06AA72492B7F8C3F00DB29F1 /* Assets.xcassets */; };
@@ -25,7 +26,7 @@
 		D94DBB192B81FACF00A4BBE1 /* JokeDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB182B81FACF00A4BBE1 /* JokeDAO.swift */; };
 		D94DBB1B2B81FBC700A4BBE1 /* JokeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB1A2B81FBC700A4BBE1 /* JokeMapper.swift */; };
 		D94DBB1D2B81FCA800A4BBE1 /* JokeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB1C2B81FCA800A4BBE1 /* JokeListViewModel.swift */; };
-		D94DBB1F2B82036D00A4BBE1 /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB1E2B82036D00A4BBE1 /* JokeView.swift */; };
+		D94DBB1F2B82036D00A4BBE1 /* JokeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB1E2B82036D00A4BBE1 /* JokeDetailView.swift */; };
 		D94DBB212B82077900A4BBE1 /* JokeNavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB202B82077900A4BBE1 /* JokeNavigationState.swift */; };
 		D94DBB252B82193A00A4BBE1 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB242B82193A00A4BBE1 /* LoadingButton.swift */; };
 		D94DBB282B824FBE00A4BBE1 /* JokeRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94DBB272B824FBE00A4BBE1 /* JokeRepositoryMock.swift */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		0601EF002B80EC1B003AAD0D /* JokeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeStorage.swift; sourceTree = "<group>"; };
+		067F8EDC2B834B7D00CAA2D3 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		067F8EDD2B8351D500CAA2D3 /* JokeStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeStorageMock.swift; sourceTree = "<group>"; };
 		06AA72402B7F8C3D00DB29F1 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AA72432B7F8C3D00DB29F1 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
 		06AA72452B7F8C3D00DB29F1 /* JokeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListView.swift; sourceTree = "<group>"; };
@@ -69,7 +72,7 @@
 		D94DBB182B81FACF00A4BBE1 /* JokeDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDAO.swift; sourceTree = "<group>"; };
 		D94DBB1A2B81FBC700A4BBE1 /* JokeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeMapper.swift; sourceTree = "<group>"; };
 		D94DBB1C2B81FCA800A4BBE1 /* JokeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListViewModel.swift; sourceTree = "<group>"; };
-		D94DBB1E2B82036D00A4BBE1 /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
+		D94DBB1E2B82036D00A4BBE1 /* JokeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDetailView.swift; sourceTree = "<group>"; };
 		D94DBB202B82077900A4BBE1 /* JokeNavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeNavigationState.swift; sourceTree = "<group>"; };
 		D94DBB242B82193A00A4BBE1 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		D94DBB272B824FBE00A4BBE1 /* JokeRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeRepositoryMock.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			children = (
 				06AA72452B7F8C3D00DB29F1 /* JokeListView.swift */,
 				D94DBB1C2B81FCA800A4BBE1 /* JokeListViewModel.swift */,
+				D94DBB152B81F9A300A4BBE1 /* JokeRepository.swift */,
 				D94DBB202B82077900A4BBE1 /* JokeNavigationState.swift */,
 			);
 			path = "Joke List";
@@ -122,7 +126,7 @@
 		0601EEFE2B80EAD7003AAD0D /* Joke Details */ = {
 			isa = PBXGroup;
 			children = (
-				D94DBB1E2B82036D00A4BBE1 /* JokeView.swift */,
+				D94DBB1E2B82036D00A4BBE1 /* JokeDetailView.swift */,
 			);
 			path = "Joke Details";
 			sourceTree = "<group>";
@@ -132,7 +136,6 @@
 			children = (
 				D94DBB172B81F9DD00A4BBE1 /* Models */,
 				0601EF002B80EC1B003AAD0D /* JokeStorage.swift */,
-				D94DBB152B81F9A300A4BBE1 /* JokeRepository.swift */,
 				D94DBB1A2B81FBC700A4BBE1 /* JokeMapper.swift */,
 			);
 			path = Storage;
@@ -166,8 +169,9 @@
 				06AA72822B80E2E700DB29F1 /* DI */,
 				06AA72432B7F8C3D00DB29F1 /* TestApp.swift */,
 				06AA72492B7F8C3F00DB29F1 /* Assets.xcassets */,
-				06AA724B2B7F8C3F00DB29F1 /* Preview Content */,
 				D94DBB342B82570500A4BBE1 /* Localizable.xcstrings */,
+				067F8EDC2B834B7D00CAA2D3 /* TestPlan.xctestplan */,
+				06AA724B2B7F8C3F00DB29F1 /* Preview Content */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -247,6 +251,7 @@
 			children = (
 				D94DBB272B824FBE00A4BBE1 /* JokeRepositoryMock.swift */,
 				D94DBB382B82628100A4BBE1 /* JokeAPIServiceMock.swift */,
+				067F8EDD2B8351D500CAA2D3 /* JokeStorageMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -396,7 +401,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  #swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -425,7 +430,7 @@
 				06AA72442B7F8C3D00DB29F1 /* TestApp.swift in Sources */,
 				06AA72812B7F90D700DB29F1 /* JokeRequest.swift in Sources */,
 				D94DBB212B82077900A4BBE1 /* JokeNavigationState.swift in Sources */,
-				D94DBB1F2B82036D00A4BBE1 /* JokeView.swift in Sources */,
+				D94DBB1F2B82036D00A4BBE1 /* JokeDetailView.swift in Sources */,
 				D94DBB2A2B82507000A4BBE1 /* Alert+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +441,7 @@
 			files = (
 				D94DBB282B824FBE00A4BBE1 /* JokeRepositoryMock.swift in Sources */,
 				D94DBB392B82628100A4BBE1 /* JokeAPIServiceMock.swift in Sources */,
+				067F8EDE2B8351D500CAA2D3 /* JokeStorageMock.swift in Sources */,
 				06AA72572B7F8C3F00DB29F1 /* JokeListViewModelTests.swift in Sources */,
 				D94DBB372B82617300A4BBE1 /* JokeRepositoryTests.swift in Sources */,
 			);
@@ -579,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Test/Preview Content\"";
-				DEVELOPMENT_TEAM = 932J26JQXM;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -609,7 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Test/Preview Content\"";
-				DEVELOPMENT_TEAM = 932J26JQXM;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

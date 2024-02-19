@@ -28,10 +28,16 @@ class JokeListViewModel {
         navigationState.routes.append(joke)
     }
 
-    func loadRandomJoke() async {
+    func showRandomJoke() async {
+        state.isLoading = true
+        defer {
+            state.isLoading = false
+        }
+
         do {
-            try await jokeRepository.loadRandomJoke()
-            await fetchJokes()
+            let randomJoke = try await jokeRepository.loadRandomJoke()
+            navigationState.routes.append(randomJoke)
+            await prepare()
         } catch {
             state.error = error.localizedDescription
         }
@@ -42,8 +48,9 @@ class JokeListViewModel {
         defer {
             state.isLoading = false
         }
+
         do {
-            let jokes = try await jokeRepository.loadJokes(number: 10)
+            let jokes = try await jokeRepository.loadNewJokes()
             state.dataState = .data(jokes)
         } catch {
             state.error = error.localizedDescription

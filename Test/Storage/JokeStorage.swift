@@ -1,11 +1,11 @@
 import Foundation
 import SwiftData
 
-protocol JokeStorage: Actor {
-    func save(model: JokeDAO) throws
-    func save(models: [JokeDAO]) throws
-    func findById(id: Int) throws -> JokeDAO?
-    func findAll() throws -> [JokeDAO]
+protocol JokeStorage {
+    func save(model: JokeDAO) async throws
+    func save(models: [JokeDAO]) async throws
+    func findById(id: Int) async throws -> JokeDAO?
+    func findAll() async throws -> [JokeDAO]
 }
 
 @ModelActor

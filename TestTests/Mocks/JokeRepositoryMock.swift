@@ -18,11 +18,10 @@ class JokeRepositoryMock: JokeRepository {
         try mockFunc().first!
     }
     
-    func loadJokes(number: Int) async throws -> [Joke] {
+    func loadNewJokes() async throws -> [Joke] {
         loadJokesCalled = true
         return try mockFunc()
     }
-    
     
     private func mockFunc() throws -> [Joke] {
         if let error {

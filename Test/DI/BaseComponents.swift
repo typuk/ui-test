@@ -18,9 +18,7 @@ class BaseComponents {
     lazy var jokeRepository = JokeRepositoryImplementation(jokeAPIService: jokeAPIService, jokeStorage: jokeStorage)
 
     let sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            JokeDAO.self
-        ])
+        let schema = Schema([JokeDAO.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {

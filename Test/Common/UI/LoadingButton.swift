@@ -1,36 +1,37 @@
 import SwiftUI
 
-struct LoadingButton<Label: View>: View {
+struct AsyncButton<Label: View>: View {
     
-    private var label: Label
     private var action: () async -> Void
-    @Binding var isLoading: Bool
+    private var label: Label
+    
+    @State private var isPerformingTask = false
     
     init(
         action: @escaping () async -> Void,
-        @ViewBuilder label: () -> Label,
-        isLoading: Binding<Bool>
+        @ViewBuilder label: () -> Label
     ) {
-        self.label = label()
         self.action = action
-        self._isLoading = isLoading
+        self.label = label()
     }
-    
+
     var body: some View {
         Button(action: {
+            isPerformingTask = true
+            
             Task {
                 await action()
+                isPerformingTask = false
             }
         }, label: {
             ZStack {
-                label.opacity(isLoading ? 0 : 1)
+                label.opacity(isPerformingTask ? 0 : 1)
                 
-                if isLoading {
+                if isPerformingTask {
                     ProgressView()
-                        .progressViewStyle(.circular)
                 }
             }
         })
-        .disabled(isLoading)
+        .disabled(isPerformingTask)
     }
 }

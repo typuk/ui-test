@@ -42,6 +42,16 @@
         }
       }
     },
+    "joke.list.navigation.bar.random" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random Joke"
+          }
+        }
+      }
+    },
     "joke.list.navigation.bar.title" : {
       "extractionState" : "manual",
       "localizations" : {
