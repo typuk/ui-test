@@ -60,7 +60,7 @@ final class JokeRepositoryTests: XCTestCase {
             jokeStorage.jokes = []
             jokeAPIService.error = NetworkError.noInternetConnection
             
-            let randomJoke = try await repository.loadRandomJoke()
+            _ = try await repository.loadRandomJoke()
             XCTFail("If API called failed and no items are saved should throw error")
         } catch {
             XCTAssertEqual(error as? JokeRepositoryError, JokeRepositoryError.empty)

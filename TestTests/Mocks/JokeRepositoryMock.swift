@@ -4,6 +4,8 @@ import XCTest
 class JokeRepositoryMock: JokeRepository {
     
     var returnValue: [Joke]!
+    var randomJoke: Joke!
+    
     var error: Error?
     
     var getJokesCalled = false
@@ -15,7 +17,11 @@ class JokeRepositoryMock: JokeRepository {
     }
     
     func loadRandomJoke() async throws -> Joke {
-        try mockFunc().first!
+        if let error {
+            throw error
+        }
+        
+        return randomJoke
     }
     
     func loadNewJokes() async throws -> [Joke] {

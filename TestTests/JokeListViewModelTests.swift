@@ -42,9 +42,10 @@ final class JokeListViewModelTests: XCTestCase {
         jokeRepository.returnValue = [.mock]
         
         XCTAssertEqual(viewModel.state.isLoading, false)
-        await self.viewModel.fetchJokes()
+        await viewModel.fetchJokes()
         XCTAssertEqual(self.viewModel.state.isLoading, false)
     
+        XCTAssertEqual(viewModel.state.dataState, .data([.mock]))
         XCTAssertEqual(jokeRepository.loadJokesCalled, true)
     }
     
@@ -52,5 +53,25 @@ final class JokeListViewModelTests: XCTestCase {
         XCTAssertEqual(navigationState.routes.isEmpty, true)
         viewModel.didSelectJoke(joke: .mock)
         XCTAssertEqual(navigationState.routes, [.mock])
+    }
+    
+    func testLoadingRandomJoke() async {
+        jokeRepository.returnValue = [.mock, .random(int: 1), .random(int: 2), .random(int: 3)]
+        jokeRepository.randomJoke = .mock
+        
+        await self.viewModel.showRandomJoke()
+    
+        XCTAssertEqual(navigationState.routes, [.mock])
+        if case .data(let jokes) = viewModel.state.dataState {
+            XCTAssertEqual(jokes.count, 4)
+        } else {
+            XCTFail("Should have 4 items")
+        }
+    }
+}
+
+private extension Joke {
+    static func random(int: Int) -> Joke {
+        .init(type: "", setup: "", punchline: "", id: int)
     }
 }
